@@ -1,0 +1,42 @@
+{
+	"manifest_version": 3,
+	"name": "superSearch",
+	"description": "superSearch资产信息检索 by 牧也",
+	"version": "1.0.0",
+	"icons": {
+		"16": "img/logo.png",
+		"48": "img/logo.png"
+	},
+	"action": {
+		"default_icon": {
+			"16": "img/logo.png",
+			"48": "img/logo.png"
+		},
+		"default_title": "superSearch",
+		"default_popup": "popup.html"
+	},
+	"background": {
+		"service_worker": "js/background.js",
+		"type": "module"
+	},
+	"host_permissions": ["*://*/*"],
+	"permissions": [
+		"proxy",
+		"storage",
+		"tabs",
+		"cookies",
+		"activeTab",
+		"webRequest",
+		"webNavigation",
+		"contextMenus",
+		"scripting"
+	],
+	"content_scripts": [
+		{
+			"matches": ["*://*/*"],
+			"js": ["js/content.js"],
+			"run_at": "document_end"
+		}
+	],
+	"devtools_page": "devcreate.html"
+}
